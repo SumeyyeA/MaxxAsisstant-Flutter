@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:maxxasisstantt/app/constant/app_image.dart';
+import 'package:maxxasisstantt/view/Screen1.dart';
+import 'package:pinput/pinput.dart';
+import 'package:provider/provider.dart';
+import 'package:maxxasisstantt/provider/password_provider.dart';
+import 'package:passcode_screen/passcode_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,8 +13,11 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: PasswordScreen(),
+    return ChangeNotifierProvider(
+      create: (context) => password_provider(),
+      child: MaterialApp(
+        home: PasswordScreen(),
+      ),
     );
   }
 }
@@ -20,21 +28,6 @@ class PasswordScreen extends StatefulWidget {
 }
 
 class _PasswordScreenState extends State<PasswordScreen> {
-  bool _showNumberInput = false;
-  bool _showPasswordInput = false;
-
-  void _showNumberInputField() {
-    setState(() {
-      _showNumberInput = true;
-    });
-  }
-
-  void _showPasswordInputField() {
-    setState(() {
-      _showPasswordInput = true;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -67,48 +60,53 @@ class _PasswordScreenState extends State<PasswordScreen> {
                     ),
                     Image.asset(AppImages.passwordLogo),
                     const SizedBox(height: 24),
-                    if (_showPasswordInput)
-                      Container(
-                        width: 233.63746643066406,
-                        height: 51.00110626220703,
+                    Pinput(
+                      defaultPinTheme: PinTheme(
+                        width: 56,
+                        height: 56,
+                        textStyle: TextStyle(
+                            fontSize: 20,
+                            color: Color.fromRGBO(30, 60, 87, 1),
+                            fontWeight: FontWeight.w600),
                         decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(92.50138092041016),
-                          border: Border.all(width: 3),
-                        ),
-                        child: const Center(
-                          child: TextField(
-                            autofocus: true,
-                            keyboardType: TextInputType.text,
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              hintText: "Misafir Şifrenizi Giriniz",
-                              border: InputBorder.none,
-                              contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 10),
-                            ),
-                          ),
+                          border: Border.all(
+                              color: Color.fromRGBO(234, 239, 243, 1)),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                       ),
-                    const SizedBox(height: 24),
-                    if (_showNumberInput)
-                      Container(
-                        width: 300,
-                        height: 50,
+                      focusedPinTheme: PinTheme(
+                        width: 56,
+                        height: 56,
+                        textStyle: TextStyle(
+                            fontSize: 20,
+                            color: Color.fromRGBO(30, 60, 87, 1),
+                            fontWeight: FontWeight.w600),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(width: 3),
-                        ),
-                        child: const TextField(
-                          keyboardType: TextInputType.phone,
-                          decoration: InputDecoration(
-                            hintText: "Numara giriniz",
-                            border: InputBorder.none,
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
-                          ),
+                          border: Border.all(
+                              color: Color.fromRGBO(114, 178, 238, 1)),
+                          borderRadius: BorderRadius.circular(8),
                         ),
                       ),
+                      submittedPinTheme: PinTheme(
+                        width: 56,
+                        height: 56,
+                        textStyle: TextStyle(
+                            fontSize: 20,
+                            color: Color.fromRGBO(30, 60, 87, 1),
+                            fontWeight: FontWeight.w600),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Color.fromRGBO(234, 239, 243, 1)),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      validator: (s) {
+                        return s == '2222' ? null : 'Pin is incorrect';
+                      },
+                      pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
+                      showCursor: true,
+                      onCompleted: (pin) => print(pin),
+                    ),
                     Spacer(),
                   ],
                 ),
@@ -127,9 +125,10 @@ class _PasswordScreenState extends State<PasswordScreen> {
                   ),
                   child: ElevatedButton(
                     onPressed: () {
-                      _showPasswordInputField();
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Screen1()));
                     },
-                    child: Text("Giriş Yap"),
+                    child: Text("Kodu Onayla"),
                   ),
                 ),
               ),
