@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:maxxasisstantt/app/constant/app_image.dart';
+import 'package:maxxasisstantt/view/view_model/Screen3.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class Screen2 extends StatelessWidget {
@@ -43,7 +44,10 @@ class Screen2 extends StatelessWidget {
                         imageUrl: images[index],
                         service: services[index],
                         onTap: () {
-                          //Navigator.push(context, MaterialPageRoute(builder: (context)=>));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Screen3()));
                         },
                       );
                     },
@@ -61,7 +65,11 @@ class Screen2 extends StatelessWidget {
       ),
       bottomNavigationBar: SalomonBottomBar(
         currentIndex: _currentIndex,
-        onTap: (i) {},
+        onTap: (i) {
+          print(i);
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Screen3()));
+        },
         items: [
           /// Home
           SalomonBottomBarItem(

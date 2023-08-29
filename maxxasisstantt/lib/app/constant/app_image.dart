@@ -9,4 +9,5 @@ class AppImages {
       "$root/mercure-hotel-umraniye-oda-servisi-864064.JPG";
   static const String stuff = "$root/Otel-Tekstili-1.jpg";
   static const String housekepping = "$root/housekeeping.jpg";
+  static const String blacklogo = "$root/Rectangle3973.svg";
 }
