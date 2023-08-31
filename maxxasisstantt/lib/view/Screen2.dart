@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:maxxasisstantt/app/constant/app_image.dart';
+import 'package:maxxasisstantt/view/ChatBotScreen.dart';
 import 'package:maxxasisstantt/view/view_model/Screen3.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
@@ -67,8 +68,8 @@ class Screen2 extends StatelessWidget {
         currentIndex: _currentIndex,
         onTap: (i) {
           print(i);
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Screen3()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => ChatBotScreen()));
         },
         items: [
           /// Home
@@ -80,14 +81,14 @@ class Screen2 extends StatelessWidget {
 
           /// Likes
           SalomonBottomBarItem(
-            icon: const Icon(Icons.diamond),
+            icon: const Icon(Icons.message),
             title: const Text("Likes"),
             selectedColor: Colors.blue,
           ),
 
           /// Search
           SalomonBottomBarItem(
-            icon: const Icon(Icons.message),
+            icon: const Icon(Icons.phone),
             title: const Text("Search"),
             selectedColor: Colors.blue,
           ),
