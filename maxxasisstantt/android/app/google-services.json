@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "949886207204",
+    "project_id": "groupchat-51c84",
+    "storage_bucket": "groupchat-51c84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949886207204:android:783716df0fefe8a00658f1",
+        "android_client_info": {
+          "package_name": "com.example.maxxasisstantt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "949886207204-tbu0tgpp972mrbnp8u3ejqm4pbchrf29.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6pzQ9a-iXPyONFL7od6-gDkEhS6ML-FM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "949886207204-tbu0tgpp972mrbnp8u3ejqm4pbchrf29.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "949886207204-481p0op2hccvjkaol5c06r0t7lldncqm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.maxxasisstantt.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

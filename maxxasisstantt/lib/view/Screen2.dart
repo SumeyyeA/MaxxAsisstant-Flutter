@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:maxxasisstantt/app/constant/app_image.dart';
 import 'package:maxxasisstantt/view/ChatBotScreen.dart';
+import 'package:maxxasisstantt/view/ChatPage.dart';
+import 'package:maxxasisstantt/view/Screen1.dart';
 import 'package:maxxasisstantt/view/view_model/Screen3.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-class Screen2 extends StatelessWidget {
-  var _currentIndex = 0;
+class Screen2 extends StatefulWidget {
+  @override
+  _Screen2State createState() => _Screen2State();
+}
+
+class _Screen2State extends State<Screen2> {
+  int _currentIndex = 0;
+
+  final List<Widget> _widgetOptions = [
+    Screen1(),
+    ChatBotScreen(),
+    ChatPage(
+      groupName: '',
+    ),
+    Screen2(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -37,27 +54,30 @@ class Screen2 extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ListView.separated(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return ServiceWidget(
-                        imageUrl: images[index],
-                        service: services[index],
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Screen3()));
-                        },
-                      );
-                    },
-                    separatorBuilder: (context, index) {
-                      return const SizedBox(
-                        height: 10,
-                      );
-                    },
-                    itemCount: images.length),
+                  padding: EdgeInsets.zero,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return ServiceWidget(
+                      imageUrl: images[index],
+                      service: services[index],
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Screen3(),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(
+                      height: 10,
+                    );
+                  },
+                  itemCount: images.length,
+                ),
                 const SizedBox(height: 20),
               ],
             ),
@@ -67,9 +87,16 @@ class Screen2 extends StatelessWidget {
       bottomNavigationBar: SalomonBottomBar(
         currentIndex: _currentIndex,
         onTap: (i) {
-          print(i);
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => ChatBotScreen()));
+          setState(() {
+            _currentIndex = i; // Update the selected index.
+          });
+          // Navigate to the corresponding screen from _widgetOptions
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => _widgetOptions[i],
+            ),
+          );
         },
         items: [
           /// Home
@@ -82,14 +109,14 @@ class Screen2 extends StatelessWidget {
           /// Likes
           SalomonBottomBarItem(
             icon: const Icon(Icons.message),
-            title: const Text("Likes"),
+            title: const Text("Message"),
             selectedColor: Colors.blue,
           ),
 
-          /// Search
+          /// Bot
           SalomonBottomBarItem(
             icon: const Icon(Icons.phone),
-            title: const Text("Search"),
+            title: const Text("Bot"),
             selectedColor: Colors.blue,
           ),
 

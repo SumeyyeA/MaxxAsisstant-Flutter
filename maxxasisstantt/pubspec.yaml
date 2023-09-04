@@ -17,6 +17,17 @@ dependencies:
   dialog_flowtter: ^0.3.3
   dialogflow_flutter: ^1.0.0
   bubble: ^1.2.1
+  flutter_chat_ui: ^1.6.9
+  uuid: ^4.0.0
+  path_provider: ^2.1.1
+  open_filex: ^4.3.2
+  mime: ^1.0.4
+  intl: ^0.18.1
+  image_picker: ^1.0.4
+  file_picker: ^5.5.0
+  firebase_auth: ^4.9.0
+  firebase_core: ^2.15.1
+  cloud_firestore: ^4.9.1
   
 dev_dependencies:
   flutter_test:
@@ -28,3 +39,4 @@ flutter:
   assets:
     - assets/images/
     - assets/dialog_flow_auth.json
+    - assets/messages.json
