@@ -39,11 +39,8 @@ class UserListScreen extends ConsumerWidget {
 
               return ListTile(
                 title: Text("${e.firstName ?? ""} ${e.lastName ?? ""}"),
-                // Diğer kullanıcı bilgilerini buraya ekleyebilirsiniz
-                onTap: () {
-                  // Tıklanan kullanıcıya özel bir işlem yapabilirsiniz
-                  // Örneğin, kullanıcıyı profil sayfasına yönlendirebilirsiniz
-                },
+                // Diğer kullanıcı bilgileri
+                onTap: () {},
               );
             },
           ),
