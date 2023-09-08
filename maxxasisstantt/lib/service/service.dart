@@ -1,5 +1,6 @@
 //import 'package:dio/dio.dart';
 import 'package:maxxasisstantt/model/ChatModel.dart';
+import 'package:maxxasisstantt/model/user_chat_log_post_model.dart';
 import 'package:maxxasisstantt/model/user_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
@@ -37,16 +38,34 @@ Future<List<ChatModel>> loadChatLogs(UserModel chatmodel) async {
         'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJUeXBlIjoiVXNlciIsImV4cCI6MTcxODk1NTAwNCwiZXhwZCI6IjIwMjQtMDYtMjFUMDc6MzA6MDQuMjI3WiIsImlhdCI6MTY4NzQxOTAwNCwiaWQiOjI5MzR9.S213IG70Yt5ij9V3gO7jmM3H_20sZy5UYbqdZ5LXbgs',
   };
 
-  final response = await http.get(Uri.parse(apiUrll), headers: headers);
+  try {
+    final response = await http.get(Uri.parse(apiUrll), headers: headers);
+    final List chatData = json.decode(response.body);
+    return chatData.map<ChatModel>((e) => ChatModel.fromJson(e)).toList();
+  } catch (e) {
+    throw Exception(e);
+  }
+}
 
-  if (response.statusCode == 200) {
-    // Başarılı bir şekilde chat kayıtları alındı
-    final List chatLogs = json.decode(response.body);
-    List<ChatModel> chat = chatLogs.map((e) => ChatModel.fromJson(e)).toList();
-    return chat;
-    // Chat kayıtlarını kullanmak için burada işlem yapabilirsiniz
-  } else {
-    // Hata durumunda uyarı gösterilebilir
-    throw Exception('Failed to load user data');
+Future<void> postChat(UserChatLogPostModel postModel, String message) async {
+  // Belirli bir kullanıcının chat kayıtlarını almak için API isteği gönderin
+  final profileId = postModel.userId;
+  final apiUrll = 'https://icibot.net/v2/api/profiles/$profileId/chat_log';
+
+  // Replace 'YOUR_BEARER_TOKEN' with your actual bearer token
+  final headers = {
+    'Authorization':
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJUeXBlIjoiVXNlciIsImV4cCI6MTcxODk1NTAwNCwiZXhwZCI6IjIwMjQtMDYtMjFUMDc6MzA6MDQuMjI3WiIsImlhdCI6MTY4NzQxOTAwNCwiaWQiOjI5MzR9.S213IG70Yt5ij9V3gO7jmM3H_20sZy5UYbqdZ5LXbgs',
+  };
+
+  try {
+    await http.post(
+      Uri.parse(apiUrll),
+      headers: headers,
+      body: json.encode(
+          postModel.toJson()), // Mesaj verisini JSON formatında gönderin
+    );
+  } catch (e) {
+    throw Exception(e);
   }
 }
