@@ -27,9 +27,9 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text(
+        title: const Text(
           'Profil',
-          style: const TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black),
         ),
         automaticallyImplyLeading: false,
         leading: IconButton(
@@ -65,20 +65,20 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
       child: Center(
         child: Column(
           children: [
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             CircleAvatar(
               radius: 50,
               backgroundImage: AssetImage(
                 "${userModel.profilePicUrl}", // Avatar görselinin yolu
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
-              "${userModel.firstName ?? ""} ${userModel.lastName ?? ""}",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              "${userModel.name ?? ""} ${userModel.lastName ?? ""}",
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 16),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
+            const SizedBox(height: 16),
             _buildMenuItem(Icons.account_circle, 'My Account'),
             _buildMenuItem(Icons.notifications, 'Notification'),
             _buildMenuItem(Icons.storage, 'Storage'),
@@ -90,7 +90,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                   primary: Colors.red, // Background color
                 ),
                 onPressed: () {},
-                child: Text('Log Out'),
+                child: const Text('Log Out'),
               ),
             ),
           ],
@@ -111,8 +111,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
         } else if (label == 'FAQ') {}
       },
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 8),
-        padding: EdgeInsets.all(20),
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           border: Border.all(color: Colors.grey),
           borderRadius: BorderRadius.circular(10),
@@ -120,7 +120,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
         child: Row(
           children: [
             Icon(icon),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Text(label),
           ],
         ),

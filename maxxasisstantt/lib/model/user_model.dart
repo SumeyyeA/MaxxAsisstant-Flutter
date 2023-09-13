@@ -7,6 +7,7 @@ class UserModel {
   int? id;
   int? hotelId;
   String? firstName;
+  String? name;
   String? lastName;
   String? profilePicUrl;
   String? locale;
@@ -42,6 +43,7 @@ class UserModel {
     this.id,
     this.hotelId,
     this.firstName,
+    this.name,
     this.lastName,
     this.profilePicUrl,
     this.locale,
