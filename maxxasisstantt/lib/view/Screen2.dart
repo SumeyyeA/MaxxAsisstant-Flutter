@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:maxxasisstantt/app/constant/app_image.dart';
 import 'package:maxxasisstantt/view/ChatBotScreen.dart';
 import 'package:maxxasisstantt/view/ChatPage.dart';
+import 'package:maxxasisstantt/view/profile/profile_screen.dart';
 import 'package:maxxasisstantt/view/Screen1.dart';
 import 'package:maxxasisstantt/view/view_model/Screen3.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:maxxasisstantt/view/Screen1.dart';
+import 'package:maxxasisstantt/view/profile/profile_screen.dart';
 
 class Screen2 extends StatefulWidget {
   @override
@@ -19,12 +21,11 @@ class _Screen2State extends State<Screen2> {
     Screen1(),
     ChatBotScreen(),
     UserListScreen(),
-    Screen2(),
+    ProfileScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
     List<String> images = [
       AppImages.housekepping,
       AppImages.service,
