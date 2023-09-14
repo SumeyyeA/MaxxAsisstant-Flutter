@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
     return ProviderScope(
       child: MaterialApp(
         home: SplashScreen(),
+        debugShowCheckedModeBanner: false,
       ),
     );
   }

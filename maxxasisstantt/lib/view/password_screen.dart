@@ -124,6 +124,9 @@ class _PasswordScreenState extends State<PasswordScreen> {
                     border: Border.all(width: 3),
                   ),
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                    ),
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Screen1()));
