@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:maxxasisstantt/app/constant/app_image.dart';
 import 'package:maxxasisstantt/view/Screen2.dart';
+import 'package:maxxasisstantt/view/home.dart';
 
 class Screen1 extends StatelessWidget {
   @override
@@ -41,7 +42,7 @@ class Screen1 extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => Screen2()));
                 },
                 child: const Text(
-                  'Guests',
+                  'Assistants',
                   style: TextStyle(fontSize: 18, color: Colors.black),
                 ),
               ),
@@ -61,10 +62,10 @@ class Screen1 extends StatelessWidget {
                 ),
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Screen2()));
+                      MaterialPageRoute(builder: (context) => HomePage()));
                 },
                 child: Text(
-                  'Assistants',
+                  'Guests',
                   style: TextStyle(fontSize: 18, color: Colors.black),
                 ),
               ),
