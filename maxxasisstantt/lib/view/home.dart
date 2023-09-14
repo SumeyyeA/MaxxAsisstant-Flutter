@@ -48,18 +48,16 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: const Text(
-          'Home',
-          style: TextStyle(fontFamily: 'Open Sans', color: Colors.black),
-        ),
-        automaticallyImplyLeading: false,
         leading: IconButton(
-          color: Colors.black,
-          icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
         ),
+        title: Image.network(
+          'https://www.maxxroyal.com/assets/dist/img/logo-resort-dark.png',
+          fit: BoxFit.contain,
+          height: 32,
+        ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(

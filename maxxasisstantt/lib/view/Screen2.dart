@@ -21,7 +21,7 @@ class _Screen2State extends State<Screen2> {
     Screen1(),
     ChatBotScreen(),
     UserListScreen(),
-    ProfileScreen(),
+    const ProfileScreen(),
   ];
 
   @override
@@ -41,8 +41,14 @@ class _Screen2State extends State<Screen2> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Center(
-          child: Image.asset(AppImages.passwordLogo),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: Image.network(
+          'https://www.maxxroyal.com/assets/dist/img/logo-resort-dark.png',
+          fit: BoxFit.contain,
+          height: 32,
         ),
         centerTitle: true,
       ),
