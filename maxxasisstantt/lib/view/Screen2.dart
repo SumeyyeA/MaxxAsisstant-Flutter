@@ -115,14 +115,14 @@ class _Screen2State extends State<Screen2> {
           /// Likes
           SalomonBottomBarItem(
             icon: const Icon(Icons.message),
-            title: const Text("Message"),
+            title: const Text("AI"),
             selectedColor: Colors.blue,
           ),
 
           /// Bot
           SalomonBottomBarItem(
             icon: const Icon(Icons.phone),
-            title: const Text("Bot"),
+            title: const Text("Message"),
             selectedColor: Colors.blue,
           ),
 

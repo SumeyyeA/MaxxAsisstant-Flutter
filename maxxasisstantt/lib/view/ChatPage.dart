@@ -23,7 +23,7 @@ class UserListScreen extends ConsumerWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: const Text(
-          'User Profile',
+          'Users',
           style: TextStyle(color: Colors.black),
         ),
         automaticallyImplyLeading: false,
@@ -46,6 +46,10 @@ class UserListScreen extends ConsumerWidget {
               final e = user[index];
 
               return ListTile(
+                leading: CircleAvatar(
+                  backgroundImage:
+                      NetworkImage(e.profilePicUrl ?? ""), // Avatar eklemek
+                ),
                 title: Text("${e.firstName ?? ""} ${e.lastName ?? ""}"),
                 onTap: () async {
                   final response = await loadChatLogs(e);

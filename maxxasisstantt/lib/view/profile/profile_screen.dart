@@ -28,7 +28,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: const Text(
-          'Profil',
+          'Profile',
           style: TextStyle(color: Colors.black),
         ),
         automaticallyImplyLeading: false,
@@ -45,9 +45,8 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   }
 
   Widget _body(ProfileViewModel watch) {
-    //body şişmesin diye ayrı bir widget oluşturduk
     if (watch.isLoading) {
-      return const Center(
+      return Center(
         child: CircularProgressIndicator(),
       );
     }
@@ -61,24 +60,25 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
 
   Widget _bodyContent(UserModel userModel) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(16.0), // Daha fazla padding
       child: Center(
         child: Column(
           children: [
-            const SizedBox(height: 16),
+            SizedBox(height: 24), // Daha fazla boşluk
             CircleAvatar(
-              radius: 50,
+              radius: 64, // Daha büyük avatar
               backgroundImage: AssetImage(
-                "${userModel.profilePicUrl}", // Avatar görselinin yolu
+                "${userModel.profilePicUrl}",
               ),
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16),
             Text(
               "${userModel.name ?? ""} ${userModel.lastName ?? ""}",
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold), // Daha büyük ve kalın yazı tipi
             ),
-            const SizedBox(height: 16),
-            const SizedBox(height: 16),
+            SizedBox(height: 24),
             _buildMenuItem(Icons.account_circle, 'My Account'),
             _buildMenuItem(Icons.notifications, 'Notification'),
             _buildMenuItem(Icons.storage, 'Storage'),
@@ -87,10 +87,10 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.red, // Background color
+                  primary: Colors.red, // Daha belirgin bir düğme rengi
                 ),
                 onPressed: () {},
-                child: const Text('Log Out'),
+                child: Text('Log Out'),
               ),
             ),
           ],
@@ -112,16 +112,27 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 8),
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(16), // Daha fazla padding
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
+          color: Colors.white, // Daha belirgin bir arka plan rengi
           borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 4,
+              offset: Offset(0, 2),
+            ),
+          ],
         ),
         child: Row(
           children: [
-            Icon(icon),
-            const SizedBox(width: 16),
-            Text(label),
+            Icon(
+              icon,
+              size: 24, // Daha büyük ikonlar
+            ),
+            SizedBox(width: 16),
+            Text(label, style: TextStyle(fontSize: 18)),
           ],
         ),
       ),
